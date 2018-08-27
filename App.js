@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,Image, Dimensions} from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,13 +18,19 @@ const instructions = Platform.select({
 });
 
 var {width,height} = Dimensions.get('window');
-console.log(width);
-
 type Props = {};
-export default class App extends Component<Props> {
+
+class Home extends Component{
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+      <Text style={{flex: 0.08,
+                  alignSelf: 'flex-end',
+                  paddingRight: 20,
+                marginTop: 30,
+                backgroundColor: '#F8FBFC',
+              }} onPress={()=>navigate('Monthview')}>skip</Text>
        <View style={{flex: 1,
                      justifyContent: 'flex-end',
                      alignItems: 'center',
@@ -53,6 +60,26 @@ export default class App extends Component<Props> {
   }
 }
 
+Home.navigationOptions = {
+  headerMode : 'none',
+  header : null
+}
+
+class Monthview extends Component{
+  render(){
+    return(
+      <Text>This is montheview</Text>
+    );
+  }
+}
+
+const App = createStackNavigator({
+  Home : {screen: Home},
+  Monthview : {screen: Monthview}
+});
+
+export default App;
+
 class Greetings extends Component {
   render(){
     return(
@@ -60,6 +87,7 @@ class Greetings extends Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
