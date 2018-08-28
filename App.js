@@ -8,8 +8,9 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,Image, Dimensions} from 'react-native';
-import { createStackNavigator } from 'react-navigation';
-
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import{} from 'react-native-vector-icons';
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -65,6 +66,12 @@ Home.navigationOptions = {
   header : null
 }
 
+// TODO:
+//Tabbed navigation
+//Daily/Monthly Swich button
+//Calender
+//Scrolable Detail area
+
 class Monthview extends Component{
   render(){
     return(
@@ -73,12 +80,36 @@ class Monthview extends Component{
   }
 }
 
+Monthview.navigationOptions = {
+  headerMode : 'none',
+  header : null
+}
+
+class Album extends Component{
+  render(){
+    return(
+      <Text>This is Album</Text>
+    );
+  }
+}
+
 const App = createStackNavigator({
   Home : {screen: Home},
   Monthview : {screen: Monthview}
 });
+const bottomNab = createMaterialBottomTabNavigator({
+  Home : {screen: Home},
+  Monthview : {screen: Monthview},
+  Album: { screen: Album }
+}, {
+  initialRouteName: 'Home',
+  activeTintColor: '#f0edf6',
+  inactiveTintColor: '#3e2465',
+  barStyle: { backgroundColor: '#694fad' },
+});
 
-export default App;
+
+export default bottomNab;
 
 class Greetings extends Component {
   render(){
