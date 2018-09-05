@@ -40,7 +40,6 @@ class Home extends Component{
                      borderBottomRightRadius: 40,
                      paddingBottom: 30,}}>
          <Text style={styles.welcome}>Hi There! Welcome to</Text>
-         <Image style={{resizeMode: 'center'}} source={require('./img/logo.png')} />
        </View>
        <View style={{flex: 1,ustifyContent: 'center',alignItems: 'center', width:width}}>
          <Greetings name='Vishang Soni' styles={styles.instructions}/>

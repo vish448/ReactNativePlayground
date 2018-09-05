@@ -19,5 +19,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "splash": {
+    "image": "./assets/splash.png"
   }
 }
